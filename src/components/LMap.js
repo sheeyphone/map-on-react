@@ -18,8 +18,13 @@ class LMap extends React.Component {
     super(props);
     this.map = null;
   }
+  static propTypes = {
+    children: PropTypes.any,
+    mapId: PropTypes.string.isRequired,
+    onMapReady: PropTypes.any,
+  };
   state = {
-    mapCtx: null,
+    mapReady: false, // use only once!
     mapConfig: {
       center: [22.65, 114.22],
       zoom: 9,
@@ -30,11 +35,6 @@ class LMap extends React.Component {
       attributionControl: false,
     },
   };
-  static propTypes = {
-    children: PropTypes.any,
-    mapId: PropTypes.string.isRequired,
-    onMapReady: PropTypes.any,
-  };
   componentDidMount() {
     this._initialMap(this.props.mapId);
   }
@@ -42,13 +42,15 @@ class LMap extends React.Component {
     this._deconstructMap();
   }
   render() {
-    const { mapCtx } = this.state;
+    const map = this.map;
+    const { mapReady } = this.state;
     const { mapId, children } = this.props;
     return (
-      <>
-        <div className="LMap" id={mapId}></div>
-        <MapContext.Provider value={mapCtx}>{children}</MapContext.Provider>
-      </>
+      <div className="LMap" id={mapId}>
+        {mapReady && (
+          <MapContext.Provider value={map}>{children}</MapContext.Provider>
+        )}
+      </div>
     );
   }
   /* The component's methods should be defined below. */
@@ -61,13 +63,14 @@ class LMap extends React.Component {
     if (!this.map) {
       let map = L.map(props.mapId, state.mapConfig);
       this.map = map;
-      this.setState({ mapCtx: map });
+      this.setState({ mapReady: true });
     }
   }
   _deconstructMap() {
     if (this.map !== null) {
       this.map.remove();
       this.map = null;
+      this.setState({ mapReady: false });
     }
   }
   _onMapReady = (map) => {
@@ -76,11 +79,21 @@ class LMap extends React.Component {
 }
 
 class LTileLayer extends React.Component {
+  constructor() {
+    super();
+    this.tileLayer = null;
+  }
   static contextType = MapContext;
   static propTypes = {
     url: PropTypes.string.isRequired,
     options: PropTypes.any,
   };
+  componentDidMount() {
+    this._initialLayer();
+  }
+  componentWillUnmount() {
+    this._removeLayer();
+  }
   render() {
     this._initialLayer();
     return <></>;
@@ -89,9 +102,16 @@ class LTileLayer extends React.Component {
   _initialLayer() {
     const map = this.context;
     const { url, options } = this.props;
-    if (map) {
+    if (map && !this.tileLayer) {
       let tileLayer = L.tileLayer(url, options);
       tileLayer.addTo(map);
+      this.tileLayer = tileLayer;
+    }
+  }
+  _removeLayer() {
+    if (this.tileLayer) {
+      this.tileLayer.remove();
+      this.tileLayer = null;
     }
   }
 }
