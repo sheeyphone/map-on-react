@@ -32,6 +32,30 @@ class App extends React.Component {
 }
 ```
 
+## How to use
+
+I recommend you manage the project's dependencies by using the `Yarn` tool.
+
+```bash
+yarn
+yarn start
+
+-------------------
+
+Compiled successfully!
+
+You can now view map-on-react in the browser.
+  Local:            http://localhost:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+webpack compiled successfully
+
+```
+
+And you would see the result on your broswer.
+
 ## Furthermore
 
-You could try your layers this way, and if you have any questions. I would be regarded to receive and solve it.
+You could try your layers this way, and if you have any questions. It would be regardful for me to recieve your comments.
