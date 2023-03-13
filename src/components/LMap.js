@@ -21,6 +21,7 @@ class LMap extends React.Component {
   static propTypes = {
     children: PropTypes.any,
     mapId: PropTypes.string.isRequired,
+    configs: PropTypes.string,
     onMapReady: PropTypes.any,
   };
   state = {
@@ -36,7 +37,7 @@ class LMap extends React.Component {
     },
   };
   componentDidMount() {
-    this._initialMap(this.props.mapId);
+    this._initialMap();
   }
   componentWillUnmount() {
     this._deconstructMap();
@@ -54,14 +55,19 @@ class LMap extends React.Component {
     );
   }
   /* The component's methods should be defined below. */
-  _initialMap(mapId) {
-    let state = this.state;
-    let props = this.props;
+  _initialMap() {
+    let { mapId, configs } = this.props;
     if (!mapId) {
       throw Error("You should specify the unique mapId props.");
     }
     if (!this.map) {
-      let map = L.map(props.mapId, state.mapConfig);
+      let mapConfigDef = { ...this.state.mapConfig };
+      if (configs) {
+        mapConfigDef = {
+          ...configs,
+        };
+      }
+      let map = L.map(mapId, mapConfigDef);
       this.map = map;
       this.setState({ mapReady: true });
     }
