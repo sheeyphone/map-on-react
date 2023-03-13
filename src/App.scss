@@ -2,34 +2,4 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  .OverMap {
-    position: absolute;
-    z-index: 1100;
-    right: 15px;
-    bottom: 15px;
-    .ButtonToggle {
-      width: 130px;
-      padding: 5px 10px;
-      margin-bottom: 5px;
-      background-color: #fff8;
-      border: 1px solid #000;
-      border-radius: 5px;
-      user-select: none;
-      cursor: pointer;
-      &:hover {
-        background-color: #fff;
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
-      .ButtonToggleStatus {
-        position: absolute;
-        right: 10px;
-        display: inline-block;
-        width: 30px;
-        text-align: right;
-        color: red;
-      }
-    }
-  }
 }

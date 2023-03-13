@@ -1,6 +1,8 @@
 import "./App.scss";
 import React from "react";
 import { LMap, LTileLayer } from "./components/LMap";
+import { LMapOver, LMapOverItem } from "./components/LMapOver";
+import ToggleButton from "./views/ToggleButton";
 
 const osmUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
@@ -20,27 +22,20 @@ class App extends React.Component {
             )}
           </LMap>
         )}
-        <div className="OverMap">
-          <div className="ButtonToggle" onClick={this.clickToggleMap}>
-            Toggle Map
-            <span className="ButtonToggleStatus">
-              {mapVisible ? "ON" : "OFF"}
-            </span>
-          </div>
-          <div className="ButtonToggle" onClick={this.clickToggleLayer}>
-            Toggle Layer
-            <span className="ButtonToggleStatus">
-              {layerVisible ? "ON" : "OFF"}
-            </span>
-          </div>
-        </div>
+        <LMapOver>
+          <LMapOverItem bottom={15} right={15}>
+            <ToggleButton
+              onToggleMap={this.clickToggleMap}
+              onToggleLayer={this.clickToggleLayer}
+            />
+          </LMapOverItem>
+        </LMapOver>
       </div>
     );
   }
   /* The component's methods should be defined below. */
-  clickToggleMap = () => {
-    let { mapVisible } = this.state;
-    this.setState({ mapVisible: !mapVisible });
+  clickToggleMap = (flag) => {
+    this.setState({ mapVisible: flag });
   };
   clickToggleLayer = () => {
     let { layerVisible } = this.state;
