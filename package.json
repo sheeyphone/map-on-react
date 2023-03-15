@@ -1,6 +1,6 @@
 {
   "name": "map-on-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "EephoneXu",
   "description": "A demo, create the React Map component with Leaflet.js",
   "main": "dist/index.js",

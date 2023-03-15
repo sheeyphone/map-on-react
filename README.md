@@ -9,7 +9,13 @@ This is a really simple demo, create the Map and the Layer component with Leafle
 > - Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps.
 >   - https://leafletjs.com/
 
-## Main goal
+## How to use
+
+I recommend you manage the project's dependencies by using the `Yarn` tool.
+
+```bash
+yarn add map-on-react
+```
 
 The main goal of this project is to help beginners, maybe some GIS developers, to build an interactive web map. Compared to the traditional way, such as native javascript or jQuery, the modern way, combines the MVVM programming concept, including Vue, React and Angular etc, and could help you to build a robust web app. But unfortunately, map frameworks like Leaflet or Openlayers have their life cycles and are not compatible with the MVVM framework.
 
@@ -32,31 +38,30 @@ class App extends React.Component {
 }
 ```
 
-If you need to put some `UI` over the `Map`, we had snacks for you.
+If you need to put some `UI` components over the `Map`, we had snacks for you. First, import the `LMapOver` and `LMapOverItem` from our lib. Then, put it behind the Map or inside the Map as the codes below. Moreover, the `LMapOverItem` has 4 options (e.g. top, bottom, right, left) to help you position and extend your UI component.
 
-## How to use
+```javascript
+import { LMapOver, LMapOverItem } from "map-on-react";
 
-We recommend you manage the project's dependencies by using the `Yarn` tool.
-
-```bash
-yarn
-yarn start
-
--------------------
-
-Compiled successfully!
-
-You can now view map-on-react in the browser.
-  Local:            http://localhost:3000
-
-Note that the development build is not optimized.
-To create a production build, use yarn build.
-
-webpack compiled successfully
-
+render() {
+  return (
+    <div className="App">
+      <LMap mapId={"LMapDemo"}>
+        <LTileLayer url={osmUrl} options={{ maxZoom: 19 }} />
+      </LMap>
+      <LMapOver>
+        <LMapOverItem bottom={15} right={15}>
+          <span>Hello UI over the map!</span>
+        </LMapOverItem>
+      </LMapOver>
+    </div>
+  );
+}
 ```
 
-And you would see the result on your broswer.
+## Npm
+
+https://www.npmjs.com/package/map-on-react
 
 ## Furthermore
 
