@@ -13,7 +13,7 @@ This is a really simple demo, create the Map and the Layer component with Leafle
 
 The main goal of this project is to help beginners, maybe some GIS developers, to build an interactive web map. Compared to the traditional way, such as native javascript or jQuery, the modern way, combines the MVVM programming concept, including Vue, React and Angular etc, and could help you to build a robust web app. But unfortunately, map frameworks like Leaflet or Openlayers have their life cycles and are not compatible with the MVVM framework.
 
-Therefore, I created two components for this demo, the LMap and the LTileLayer, and you could type your codes like the codes below. Magically, the LTileLayer insert into the LMap label as a slot, and you could see your OpenStreetMap on your browser. Just enjoy it!
+Therefore, we created two components for this demo, the LMap and the LTileLayer, and you could type your codes like the codes below. Magically, the LTileLayer insert into the LMap label as a slot, and you could see your OpenStreetMap on your browser. Just enjoy it!
 
 ```javascript
 import { LMap, LTileLayer } from "./components/LMap";
@@ -32,9 +32,11 @@ class App extends React.Component {
 }
 ```
 
+If you need to put some `UI` over the `Map`, we had snacks for you.
+
 ## How to use
 
-I recommend you manage the project's dependencies by using the `Yarn` tool.
+We recommend you manage the project's dependencies by using the `Yarn` tool.
 
 ```bash
 yarn

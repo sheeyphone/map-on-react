@@ -2,6 +2,10 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import "./ToggleButton.scss";
 
+/*
+ A demo component to control the Map and the Layer,
+ Shows that how the UI components work in the LOverMap.
+*/
 class ToggleButton extends React.Component {
   constructor(props) {
     super(props);
