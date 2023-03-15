@@ -16,7 +16,7 @@ The main goal of this project is to help beginners, maybe some GIS developers, t
 Therefore, we created two components for this demo, the LMap and the LTileLayer, and you could type your codes like the codes below. Magically, the LTileLayer insert into the LMap label as a slot, and you could see your OpenStreetMap on your browser. Just enjoy it!
 
 ```javascript
-import { LMap, LTileLayer } from "./components/LMap";
+import { LMap, LTileLayer } from "map-on-react";
 
 const osmUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 class App extends React.Component {
