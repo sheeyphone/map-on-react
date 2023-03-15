@@ -27,6 +27,12 @@ Object.defineProperty(exports, "LTileLayer", {
     return _LMap.LTileLayer;
   }
 });
+Object.defineProperty(exports, "MapContext", {
+  enumerable: true,
+  get: function get() {
+    return _LMap.MapContext;
+  }
+});
 var _LMap = require("./LMap");
 var _LMapOver = require("./LMapOver");
 if (!L || !L.map) {
