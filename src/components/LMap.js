@@ -21,7 +21,7 @@ class LMap extends React.Component {
   static propTypes = {
     children: PropTypes.any,
     mapId: PropTypes.string.isRequired,
-    configs: PropTypes.string,
+    configs: PropTypes.any,
     onMapReady: PropTypes.any,
   };
   state = {
