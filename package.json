@@ -1,12 +1,18 @@
 {
   "name": "map-on-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "EephoneXu",
   "description": "A React Map component with Leaflet.js",
   "main": "dist/index.js",
   "license": "MIT License",
   "private": false,
   "files": [ "dist", "README.md" ],
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build": "./node_modules/.bin/babel src/components --out-dir dist --copy-files --ignore *.js"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -30,12 +36,6 @@
     "node-sass": "^8.0.0",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build": "./node_modules/.bin/babel src/components --out-dir dist --copy-files --ignore *.js"
   },
   "browserslist": {
     "production": [
